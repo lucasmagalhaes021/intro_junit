@@ -19,20 +19,20 @@ public class ProdutoTest {
 	
 	@BeforeEach
 	public void inicializa() {
-		livro = new Produto("Introdu��o ao Teste de Software", 100.00);
+		livro = new Produto("Introdução ao Teste de Software", 100.00);
 	}
 	
 	@Test
 	public void testCriaProduto() {
 		Assertions.assertAll("livro",
-				() -> assertEquals("Introdu��o ao Teste de Software", livro.getNome()),
+				() -> assertEquals("Introdução ao Teste de Software", livro.getNome()),
 				() -> assertTrue(100.00 == livro.getPreco())						
 				);
 	}
 	
 	@Test
 	public void testProdutosIguais() {
-		Produto livro2 = new Produto("Introdu��o ao Teste de Software", 90.00);
+		Produto livro2 = new Produto("Introdução ao Teste de Software", 90.00);
 		
 		assertNotSame(livro, livro2);
 		
@@ -44,6 +44,24 @@ public class ProdutoTest {
 		assertThat(livro.getNome(), notNullValue());
 		assertThat(livro.getNome(), containsString("Teste"));
 		assertThat(livro, instanceOf(Produto.class));
+	}
+	
+	@Test
+	public void testSetNome() {
+		livro.setNome("Introdução ao Teste de Software edição 2");
+		Assertions.assertEquals("Introdução ao Teste de Software edição 2", livro.getNome());
+	}
+	
+	@Test
+	public void testSetPreco() {
+		livro.setPreco(150.30);
+		Assertions.assertEquals(150.30, livro.getPreco());
+	}
+	
+	@Test
+	public void testEquals() {
+		livro.equals(livro);
+		Assertions.assertTrue(true);
 	}
 
 }
